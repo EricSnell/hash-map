@@ -60,6 +60,7 @@ HashMap.prototype._findSlot = function(key) {
 HashMap.prototype._resize = function(size) {
 	var oldSlots = this._slots;
 	this._capacity = size;
+	this.length = 0;
 	this._deleted = 0;
 	this._slots = [];
 	for (var i = 0; i < oldSlots.length; i++) {
