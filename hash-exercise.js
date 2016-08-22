@@ -78,3 +78,5 @@ HashMap.prototype._resize = function(size) {
 		}
 	}
 };
+
+module.exports = HashMap;

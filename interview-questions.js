@@ -1,4 +1,5 @@
 'use strict'
+var HashMap = require('./hash-exercise');
 /* Write an algorithm to check whether any permutation of a string is a palindrome (a string which reads the same forwards and backwards). For example, "madam", "amadm" and "cllci" should all return true, whereas "caabl" and "aaxxis" should return false. */
 let palinCheck = (string) => {
 	let anticipatedMatches = string.length
@@ -23,12 +24,13 @@ let palinCheck = (string) => {
 function demo(str) {
 	console.log(str, palinCheck(str) ? "is palindromable" : "is not palindromable");
 }
+/*
 demo('o') 	// true	
 demo('ppp')		// true
 demo('pppaaa')	// false
 demo('popopddplll')	// true
 demo(Array(50).join())  // true
-
+*/
 
 /* Write an algorithm to group a list of words into anagrams. For example, if the input was ['east', 'cars', 'acre', 'arcs', 'teas', 'eats', 'race'], the output should be: [['east', 'teas', 'eats'], ['cars', 'arcs'], ['acre', 'race']]. */
 
@@ -39,19 +41,19 @@ let anagrams = (array) => {
 		console.log(array[i])
 		let sorted = array[i].split('').sort().join('')
 
-		try  
-		if (!anagramMap[sorted]) {
-			anagramMap.set(sorted, [array[i]]) 
-		} else{
+		try {
 			anagramMap.get(sorted).push(array[i])
 		}
+		catch (e) {
+			anagramMap.set(sorted, [array[i]])
+		}
 	}
+	console.log(anagramMap._slots);
+	// for (var key in anagramMap) {
+	// 	outputArr.push(anagramMap[key])
+	// }
 
-	for (var key in anagramMap) {
-		outputArr.push(anagramMap[key])
-	}
-
-	return outputArr
+	// return outputArr
 }
 
 console.log(anagrams(['east', 'cars', 'acre', 'arcs', 'teas', 'eats', 'race']))
