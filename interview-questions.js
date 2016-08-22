@@ -33,27 +33,28 @@ demo(Array(50).join())  // true
 /* Write an algorithm to group a list of words into anagrams. For example, if the input was ['east', 'cars', 'acre', 'arcs', 'teas', 'eats', 'race'], the output should be: [['east', 'teas', 'eats'], ['cars', 'arcs'], ['acre', 'race']]. */
 
 let anagrams = (array) => {
-	let anagramMap = {};
-	let outputArr = [];
+	let anagramMap = new HashMap()
+	let outputArr = []
 	for (var i = 0; i < array.length; i++) {
-		console.log(array[i]);
-		let sorted = array[i].split('').sort().join('');
+		console.log(array[i])
+		let sorted = array[i].split('').sort().join('')
 
+		try  
 		if (!anagramMap[sorted]) {
-			anagramMap[sorted] = [array[i]]
+			anagramMap.set(sorted, [array[i]]) 
 		} else{
-			anagramMap[sorted].push(array[i])
+			anagramMap.get(sorted).push(array[i])
 		}
 	}
 
 	for (var key in anagramMap) {
-		outputArr.push(anagramMap[key]);
+		outputArr.push(anagramMap[key])
 	}
 
-	return outputArr;
+	return outputArr
 }
 
-console.log(anagrams(['east', 'cars', 'acre', 'arcs', 'teas', 'eats', 'race']));
+console.log(anagrams(['east', 'cars', 'acre', 'arcs', 'teas', 'eats', 'race']))
 
 
 /* Write a hash map implementation which uses separate chaining. */

@@ -8,6 +8,14 @@ var HashMap = function(initialCapacity) {
 HashMap.MAX_LOAD_RATIO = 0.9;
 HashMap.SIZE_RATIO = 3;
 
+HashMap.prototype.get = function(key) {
+	var index = this._findSlot(key);
+	if (this._slots[index] === undefined) {
+		throw new Error('Key error');
+	}
+	return this._slots[index].value;
+};
+
 HashMap._hashString = function(string) {
 	var hash = 5381;
 	for (var i = 0; i < string.length; i++) {
